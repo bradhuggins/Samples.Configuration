@@ -10,20 +10,20 @@ namespace ConfigSamples.Framework.Controllers
 {
     public class ConfigController : ApiController
     {
-        [Route("", Name = "GetSampleKeyValue")]
-        public string GetSampleKeyValue()
+        [Route("", Name = "GetSampleAppSettingsValue")]
+        public string GetSampleAppSettingsValue()
         {
             return ConfigurationManager.AppSettings["samplekey"].ToString();
         }
 
-        [Route("getbykey", Name = "GetByKey")]
-        public string GetByKey(string key)
+        [Route("appSettings/{key}", Name = "GetByKey")]
+        public string GetAppSettingsByKey([FromUri] string key)
         {
             return ConfigurationManager.AppSettings[key].ToString();
         }
 
-        [Route("getconnectionstringbyKey", Name = "GetConnectionStringByKey")]
-        public string GetConnectionStringByKey(string key)
+        [Route("connectionString/{key}", Name = "GetConnectionStringByKey")]
+        public string GetConnectionStringByKey([FromUri] string key)
         {
             return ConfigurationManager.ConnectionStrings[key].ToString();
         }
